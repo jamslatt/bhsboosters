@@ -8,6 +8,7 @@
     <title>BHS Boosters</title>
     <link type="text/css" rel="stylesheet" href="assets/theme.css" />
     <link type="text/css" rel="stylesheet" href="assets/bulma.css" />
+	<link type="text/css" rel="stylesheet" href="assets/animate.css" />
     <link rel='shortcut icon' type='image/x-icon' href='assets/favicon.ico' />
 </head>
 
@@ -56,19 +57,19 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">
-        <img src="assets/logo.png" alt="Logo" />
+        <img src="assets/logo.png" class="animated bounceInDown" alt="Logo" />
       </h1>
             </div>
         </div>
         <div class="hero-foot" style="text-align:center; margin-bottom: 20px;">
-            <h2 class="title"><i class="fa fa-chevron-down down" aria-hidden="true"></i></h2>
+            <h2 class="title"><a href="#about" onClick="$('.pulse').removeClass('pulse');" ><i class="animated pulse fa fa-chevron-down down" aria-hidden="true"></i></a></h2>
         </div>
 
     </section>
 
 
 
-    <section class="hero is-info is-medium is-bold">
+    <section class="hero is-info is-medium is-bold" id="about">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
@@ -80,7 +81,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="board">
             <div class="container">
                 <h1 class="title">
                     The Board
@@ -211,6 +212,43 @@
     <!-- Javascript -->
     <script src="assets/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/1cc38619d3.js"></script>
+	
+	<script>
+	$('a[href*="#"]')
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+  </script>
 </body>
 
 </html>
