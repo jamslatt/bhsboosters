@@ -5,8 +5,8 @@ This is the Official website for the BHS Booster Club. It contains relevant info
 # Site Table of Contents
 - Index
 - Docs
-- - Direct File URL
+  - Direct File URL
 - Teams
-- - Every Team
-- - - Team Relevant Content
+  - Every Team
+    - Team Relevant Content
 - 404
